@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <title>update show</title>
+    <style>
+        input[type=text]{
+            width: 250%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 20px 22px 12px 20px;
+            display: inline-block;
+            font-size: large;
+        }
+
+        .container {
+            margin-top: 10px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 15px;  
+            padding-bottom: 60px;
+            border: 10px solid rgb(190, 181, 192);
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 5px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 5px;
+        }
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #e0d624;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <h2 style="text-align: center; margin-top: 10px;">Update Show details</h2>
+    <div class="container">
+    <form action="" method="POST">
+
+        <div class="row">
+            <div class="col-25">
+                <label for="s_name">Show Name:</label>
+            </div>
+            <div class="col-25">
+                <input type="text" id="s_name" name="s_name" value="{{show.show_name}}">
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-25">
+                <label for="s_rating">Rating:</label>
+            </div>
+            <div class="col-25">
+                <input type="text" id="s_rating" name="s_rating" value="{{show.rating}}">
+            </div>
+        </div>          
+        
+        <div class="row">
+            <div class="col-25">
+                <label for="s_timing">Start Timing:</label>
+            </div>
+            <div class="col-25">
+                <input type="time" id="s_timing" name="s_timing" value="{{show.start_timing}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="e_timing">End Timing:</label>
+            </div>
+            <div class="col-25">
+                <input type="time" id="e_timing" name="e_timing" value="{{show.end_timing}}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="s_tags">Tags:</label>
+            </div>
+            <div class="col-25">
+                <input type="text" id="s_tags" name="s_tags" value="{{show.tags}}">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-25">
+                <label for="s_price">price:</label>
+            </div>
+            <div class="col-25">
+                <input type="text" id="s_price" name="s_price" value="{{show.price}}">
+            </div>
+        </div>
+        <div class="row" style="float: right; margin: 0 10px 10px 0;">
+            <input type="submit" value="save changes">
+        </div>
+
+        
+    </form>
+</div>
+</body>
+</html>
+
+
+  
+        
+ 
+  

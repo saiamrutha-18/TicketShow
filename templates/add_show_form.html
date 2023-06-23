@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Add show</title>
+    <style>
+        input[type=text]{
+            width: 250%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 20px 22px 12px 20px;
+            display: inline-block;
+            font-size: large;
+        }
+
+        .container {
+            margin-top: 10px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 15px;  
+            padding-bottom: 60px;
+            border: 10px solid rgb(190, 181, 192);
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 5px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 5px;
+        }
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #e0d624;
+        }
+    </style>
+</head>
+<body>
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Admin's Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">       
+        </div>
+      
+        <a class="nav-link" href="{{url_for('rating_page')}}">Summary</a>
+        <a class="nav-link" href="/logout">Logout</a> 
+      </nav>
+      
+    <h2 style="text-align: center; margin-top: 10px;">Enter Show details</h2>
+    <div class="container">
+        <form action="/assign/add_show/{{v1.venue_id}}" method="POST">
+            <div class="row">
+                <div class="col-25">
+                    <label for="s_name">Show Name:</label>
+                </div>
+                <div class="col-25">
+                    <input type="text" id="s_name" name="s_name">
+                </div>
+            </div>         
+            
+            <div class="row">
+                <div class="col-25">
+                    <label for="s_rating">Rating:</label>
+                </div>
+                <div class="col-25">
+                    <input type="text" id="s_rating" name="s_rating">
+                </div>
+            </div>          
+            
+            <div class="row">
+                <div class="col-25">
+                    <label for="s_timing">Start time</label>
+                </div>
+                <div class="col-25">
+                    <input type="time" id="s_timing" name="s_timing">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="e_timing">End time:</label>
+                </div>
+                <div class="col-25">
+                    <input type="time" id="e_timing" name="e_timing">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="s_tags">Tags:</label>
+                </div>
+                <div class="col-25">
+                    <input type="text" id="s_tags" name="s_tags">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-25">
+                    <label for="s_price">price:</label>
+                </div>
+                <div class="col-25">
+                    <input type="text" id="s_price" name="s_price">
+                </div>
+            </div>
+
+
+            <div class="row" style="float: right; margin: 0 10px 10px 0;">
+                <input type="submit" value="Add show">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+  
+        
+ 
+  

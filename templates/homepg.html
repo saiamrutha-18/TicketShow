@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home</title>
+    <style>
+
+        .background {
+            position: relative;
+            height: 91vh;
+            width: 100%;
+            background-image: url(../static/homepg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-y: 36% ;
+            
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .overlay h1,
+        .overlay p,
+        .overlay a {
+            color: #fff;
+        }
+
+        .overlay .container {
+            backdrop-filter: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Ticket Show Booking</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+        <a class="nav-link" href="{{url_for('login')}}">Login as user</a>
+        <a class="nav-link" href="{{url_for('register')}}">Register</a>
+    </nav>
+    <div class="background">
+        <div class="overlay">
+            <div class="container">
+                <h1>Welcome to Ticket Show Booking!</h1>
+                <p class="lead">Get ready for an amazing movie experience.</p>
+                <p>Buy tickets online and enjoy the latest movies in theaters.</p>
+                <p>With Ticket Show Booking, you can easily browse and book tickets for your favorite movies in your favourite theatres</p>
+                <p>Join us now to experience the convenience of online movie ticket booking!</p>
+                <a class="btn btn-primary" href="{{url_for('login')}}">Login as user</a>
+                <a class="btn btn-secondary" href="{{url_for('adminlogin')}}">Login as admin</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

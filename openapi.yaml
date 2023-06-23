@@ -1,0 +1,243 @@
+openapi: 3.0.3
+info:
+  title: Open Api Documentation for Venues
+  version: 1.0.11
+  description: This is a api documentation for venues
+servers:
+  - url: http://127.0.0.1:5000/
+paths:
+  /api/venue/{id}:
+    get:
+      tags:
+          - venue
+      summary: End point to read a venue by id
+      description: End point to read a venue by id
+      parameters:
+        - in: path
+          name: id
+          description: ID of venue to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                title: venue object
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  vname:
+                    type: string
+                    example: Imax
+                  place:
+                    type: string
+                    example: Tank Bund
+                  location:
+                    type: string
+                    example: Hyderabad
+                  capacity:
+                    type: integer
+                    example: 150
+                  
+        '404':
+          description: Venue not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  
+    delete:
+      tags:
+        - venue
+      summary: End point to delete a venue by id
+      description: End point to delete a venue by id
+      parameters:
+        - in: path
+          name: id
+          description: ID of venue to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successfully deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  
+        '404':
+          description: Venue not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  
+    put:
+      tags:
+          - venue
+      summary: End point to update a venue by id
+      description: End point to update a venue by id
+      parameters:
+        - in: path
+          name: id
+          description: ID of venue to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vname:
+                  type: string
+                  example: Imax
+                place:
+                  type: string
+                  example: Tank Bund
+                location:
+                  type: string
+                  example: Hyderabad
+                capacity:
+                  type: integer
+                  example: 150
+      responses:
+        '200':
+          description: successfully updated
+          content:
+            application/json:
+              schema:
+                title: venue object
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  vname:
+                    type: string
+                    example: Imax
+                  place:
+                    type: string
+                    example: Tank Bund
+                  location:
+                    type: string
+                    example: Hyderabad
+                  capacity:
+                    type: integer
+                    example: 150
+          
+        '404':
+          description: Venue to update not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  
+  /api/all_venues:
+    get:
+      tags:
+        - allVenues
+      summary: End point to read all venues
+      description: End point to read all venues
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                title: venue object
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  vname:
+                    type: string
+                    example: Imax
+                  place:
+                    type: string
+                    example: Tank Bund
+                  location:
+                    type: string
+                    example: Hyderabad
+                  capacity:
+                    type: integer
+                    example: 150
+                  
+    post:
+      tags:
+        - allVenues
+      summary: End point to create a venue
+      description: End point to create a venue
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vname:
+                  type: string
+                  example: Imax
+                place:
+                  type: string
+                  example: Tank Bund
+                location:
+                  type: string
+                  example: Hyderabad
+                capacity:
+                  type: integer
+                  example: 150
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                title: venue object
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  vname:
+                    type: string
+                    example: Imax
+                  place:
+                    type: string
+                    example: Tank Bund
+                  location:
+                    type: string
+                    example: Hyderabad
+                  capacity:
+                    type: integer
+                    example: 150
+        
+          
+                    
+                    
+      
+      

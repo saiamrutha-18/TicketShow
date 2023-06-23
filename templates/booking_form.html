@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Booking_form</title>
+    <style>
+        fieldset{
+        border: 5px solid rgb(255,232,57);
+        width: 400px;
+        float: left;
+        padding: 30px;
+        }
+        form{
+            display:flex; 
+            flex-direction:column; 
+            justify-content:center;
+            min-height:50vh;
+            margin-left: 35%;
+        }
+        .content h3,h4{
+            color: darkblue;
+            margin: 10px;
+        }
+        #time{
+            position: fixed;
+            right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!--navbar-->
+    <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">User Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>        
+        </div>
+      
+        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="/booking_shows/{{user.id}}">Home</a>
+        <a class="nav-link" href="/logout">Logout</a> 
+      </nav>
+
+    </div>
+
+    <div class="content">
+        <h3>Booking-Show{{show.show_id}} Venue{{venue.venue_id}}</h3>
+        <h4 id="time">Time:   {{show.start_timing}}-{{show.end_timing}}</h4>
+        <h4 id="cap">Available seats:   {{ seats_avail }}</h4>
+        
+        <form action="/booking_shows/usr/{{user.id}}/venue/{{venue.venue_id}}/show/{{show.show_id}}" method="POST">
+            <fieldset>
+            <label for="n_tickets">Number of seats</label>
+            <input type="text" name="n_tickets" id="n_tickets" onkeyup="cal_tot()">
+            <br><br>
+            <label for="price">Price of a ticket</label>
+            <input type="text" name="price" id="price" readonly="True" value="{{show.price}}">
+            <br><br>
+            <label for="tot">Total price</label>
+            <input type="text" name="tot" id="tot" readonly="True">
+            <br><br>
+            <input type="submit" value="Confirm">
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        function cal_tot(){
+          var n_tick =document.getElementById("n_tickets").value;
+          var price = document.getElementById("price").value;
+          var tot= n_tick * price;
+          document.getElementById("tot").value=tot;
+        }
+    </script>
+</body>
+</html>

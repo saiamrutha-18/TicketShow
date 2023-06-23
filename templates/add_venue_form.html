@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Add Venue</title>
+    <style>
+        input[type=text]{
+            width: 250%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 24px 22px 12px 24px;
+            display: inline-block;
+            font-size: large;
+        }
+
+        .container {
+            margin-top: 50px;
+            border-radius: 5px;
+            background-color: #d3e3e4;
+            padding: 30px;  
+            padding-bottom: 60px;
+            border: 10px solid rgb(161, 195, 212);
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #e0d624;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Admin's Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+      
+        <a class="nav-link" href="{{url_for('rating_page')}}">Summary</a>
+        <a class="nav-link" href="/logout">Logout</a> 
+    </nav>
+
+    <h2 style="text-align: center; margin-top: 10px;">Enter Venue details</h2>
+    <div class="container">
+    <form action="/add_venue" method="POST">
+        <div class="row">
+            <div class="col-25">
+                <label for="v_name">Venue Name:</label>
+            </div>
+            <div class="col-25">
+                <input type="text" id="v_name" name="v_name">
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col-25">
+                    <label for="v_place">Place:</label>
+                </div>
+                <div class="col-25">
+                    <input type="text" id="v_place" name="v_place">
+                </div>
+            </div>
+        
+        <div class="row">
+            <div class="col-25">
+                <label for="v_loc">Location:</label>
+            </div>
+            <div class="col-25">
+                <input type="text" id="v_loc" name="v_loc">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-25">
+                <label for="v_cap">capacity:</label>
+            </div>
+            <div class="col-25">
+                <input type="text" id="v_cap" name="v_cap">
+            </div>
+        </div>
+        
+        <div class="row" style="float: right; margin: 0 10px 10px 0;">
+            <div class="row">
+            <input type="submit" value="Add venue">
+        </div>
+        
+    </form>
+    </div>
+</body>
+</html>
+
+
+  
+        
+ 
+  

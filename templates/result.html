@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/venue.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <style>
+        .glyphicon{
+            font-size: 25px;    
+        }
+        
+    </style>
+    <title>Search results</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Admin's Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li> 
+          </ul>        
+        </div>
+      
+        <a class="nav-link" href="{{url_for('rating_page')}}">Summary</a>
+        <a class="nav-link" href="/logout">Logout</a> 
+      </nav>
+    
+    {% for venue in venues %}
+    
+    <div class="card">
+        <!-- display venue name -->
+        <div>
+            <h3>{{venue.venue_name}}</h3>
+        </div>
+
+
+        <!-- display shows of a venue -->
+        <div>
+            {% if venue.shows|length <1 %}
+            <h3 style="text-align: center; color: rgb(1, 14, 14);font-family: Arial, Helvetica, sans-serif">No shows created</h3>
+            {% else %}
+            <div class="container">
+                <table border="2px">
+                    {% for show in venue.shows %}
+                    {% if search.lower() in show.show_name.lower() %}
+                        <tr>
+                            <td>
+                                <h4><b>{{show.show_name}}</b></h4>
+                                <a href="/venue/{{venue.venue_id}}/show/{{show.show_id}}">Delete</a>
+                                <a href="/update_show/{{show.show_id}}">Update</a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+        </div>
+
+
+        <!-- add more shows btn -->
+        <div>
+            <!-- it should go to show form where it should enter that this show belongs to this venue in associate table -->
+            <a href="/assign/{{venue.venue_id}}">
+                <span class="glyphicon glyphicon-plus-sign "></span>
+            </a>
+        </div>
+
+
+        <!-- edit or del venues button -->
+        <div>
+            <a href="/delete_venue/{{venue.venue_id}}">Delete</a>
+            <a href="/update_venue/{{venue.venue_id}}">Update</a>
+        </div>
+
+        
+    </div>
+    
+    {% endfor%}
+    
+</body>
+</html>

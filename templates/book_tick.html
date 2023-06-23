@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/booking.css">
+    <title>Booking</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">User Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li>
+                <form class="form-inline my-2 my-lg-0" method="POST" action="/booking_shows/{{user.id}}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li> 
+          </ul>        
+        </div>
+      
+        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="/usr_bookings/{{user.id}}">Bookings</a>
+        <a class="nav-link" href="/logout">Logout</a> 
+      </nav>
+    {% if venues|length ==0 %}
+        <h2>No venues or shows</h2>
+    {% else %}
+    {% for venue in venues %}
+    {% if search is none or search.lower() in venue.venue_name.lower() %}
+    <div class="card">
+        <!-- display venue name -->
+        <div>
+            <h3>{{venue.venue_name}}</h3>
+        </div>
+
+        <!-- display shows of a venue -->
+        <div>
+            {% if venue.shows|length <1 %}
+            <h3 style="text-align: center; color: rgb(1, 14, 14);font-family: Arial, Helvetica, sans-serif">No shows</h3>
+            {% else %}
+            <div class="container">
+                <table border="2px">
+                        <tr>
+                            {% for show in venue.shows %}
+                            <td style="text-align: center;">
+                                <h4><b>{{show.show_name}}</b></h4>
+                                <h4>{{ show.start_timing}} - {{ show.end_timing}}</h4>
+                                <a href="/booking_shows/usr/{{user.id}}/venue/{{venue.venue_id}}/show/{{show.show_id}}"><button>Book</button></a>
+                                <br>
+                                <br>
+                            </td>
+                            {% endfor %}
+                        </tr>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+        
+    </div>
+    {% endif %}
+    {% endfor%}
+    {% endif %}
+</body>
+</html>
